@@ -1,0 +1,25 @@
+//código para calcular a media de 2 notas de um aluno.
+
+#include <stdio.h>
+#include <stdlib.h>
+
+float notas(float x, float y){
+	float media = (x+y)/2;
+	if(media>=7){
+		printf("Aprovado! sua nota foi de: %.2f", media);
+	} else {
+		printf("Reprovado! sua nota foi de: %.2f", media);
+	}
+}
+
+
+int main(){
+	float n1, n2, media;
+	int quantidade;
+	printf("Digite a primeira nota: ");
+	scanf("%f", &n1);
+	printf("Digite a segunda nota: ");
+	scanf("%f", &n2);
+	notas(n1,n2);
+	return 0;
+}
