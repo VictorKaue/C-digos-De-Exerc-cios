@@ -8,8 +8,9 @@ struct Alunos{
     float nota, soma;
 }; typedef struct Alunos alunos; 
 
-void notas(float media){
-	if(media>=7){
+void notas(float media, char nome[50]){
+	    printf("%s\n: ", nome);
+    if(media>=7){
 		printf("Aprovado! sua nota foi de: %.2f\n", media);
 	} else {
 		printf("Reprovado! sua nota foi de: %.2f\n", media);
@@ -36,7 +37,7 @@ int main(){
             aluno[i].soma += aluno[i].nota;
         }
         float media = aluno[i].soma/quanti_notas;
-        notas(media);
+        notas(media, aluno[i].nome);
     }
 	return 0;
 }
