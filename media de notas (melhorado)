@@ -3,24 +3,22 @@
 #include <locale.h>
 #include <string.h>
 
-
 struct Alunos{
     char nome[50];
     float nota, soma;
 }; typedef struct Alunos alunos; 
 
-float notas(float x, float y){
-	float media = (x+y)/2;
+void notas(float media){
 	if(media>=7){
-		printf("Aprovado! sua nota foi de: %.2f", media);
+		printf("Aprovado! sua nota foi de: %.2f\n", media);
 	} else {
-		printf("Reprovado! sua nota foi de: %.2f", media);
+		printf("Reprovado! sua nota foi de: %.2f\n", media);
 	}
 }
 
 int main(){ 
+    setlocale(LC_ALL, "Portuguese_Brazil");
     int N, quanti_notas;
-    float soma;
     printf("Digite a quantidade de alunos: ");
     scanf("%d", &N);
     alunos aluno[N];
@@ -28,12 +26,17 @@ int main(){
     scanf("%d", &quanti_notas);
 	for (int i = 0; i < N; i++)
     {
-        printf("Digite o nome do aluno");
-        scanf(" %50[^\n]", &aluno[i].nome);
-        printf("Digite a segunda nota: ");
-        scanf("%f", &aluno[i].nota);
-        
+        aluno[i].soma = 0;
+        printf("Digite o nome do aluno: ");
+        scanf(" %49[^\n]", aluno[i].nome);
+        for (int j = 0; j < quanti_notas; j++){
+            printf("Digite a %dª nota: ", j+1);
+            scanf("%f",&aluno[i].nota);
+            fflush(stdin);
+            aluno[i].soma += aluno[i].nota;
+        }
+        float media = aluno[i].soma/quanti_notas;
+        notas(media);
     }
-    
 	return 0;
 }
