@@ -9,7 +9,7 @@ struct Alunos{
 }; typedef struct Alunos alunos; 
 
 void notas(float media, char nome[50]){
-	    printf("%s\n: ", nome);
+	    printf("%s: \n", nome);
     if(media>=7){
 		printf("Aprovado! sua nota foi de: %.2f\n", media);
 	} else {
