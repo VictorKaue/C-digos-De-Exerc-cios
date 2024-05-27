@@ -18,7 +18,7 @@ void notas(float media, char nome[50]){
 }
 
 int main(){ 
-    setlocale(LC_ALL, "Portuguese_Brazil");
+    setlocale(LC_ALL, "Portuguese");
     int N, quanti_notas;
     printf("Digite a quantidade de alunos: ");
     scanf("%d", &N);
