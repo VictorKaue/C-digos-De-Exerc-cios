@@ -9,20 +9,20 @@ int main(){
     printf("Digite um nome:");
     scanf("%50[^\n]", nome);
     int contagem = strlen(nome);
+    int contagem2= contagem;
     int i, j;
-    for(i = strlen(nome); i > 0; i--){ 
-        for(j = 0; j < strlen(nome)-i; j++){
-            printf("%c", nome[j]);
+    for(i = contagem; i >= 0; i--){ 
+        for(j = 0; j < contagem2-i; j++){
+            printf("%c ", nome[j]);
         }
-        contagem++;
         puts("");
     }
-    
-    for(i = 0; i < strlen(nome); i++){ 
-        for(j = 0; j < contagem; j++){
-            printf("%c", nome[j]);
+    contagem2--;
+    for(i = 0; i < contagem; i++){ 
+        for(j = 0; j < contagem2; j++){
+            printf("%c ", nome[j]);
         }
-        contagem--;
+        contagem2--;
         puts("");
     }
     
