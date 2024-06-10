@@ -10,6 +10,14 @@ int main(){
     scanf("%50[^\n]", nome);
     int contagem = strlen(nome);
     int i, j;
+    for(i = strlen(nome); i > 0; i--){ 
+        for(j = 0; j < strlen(nome)-i; j++){
+            printf("%c", nome[j]);
+        }
+        contagem++;
+        puts("");
+    }
+    
     for(i = 0; i < strlen(nome); i++){ 
         for(j = 0; j < contagem; j++){
             printf("%c", nome[j]);
@@ -17,15 +25,6 @@ int main(){
         contagem--;
         puts("");
     }
-    contagem = 0;
-    for(i = 0; i < strlen(nome); i++){ 
-        for(j = 0; j < strlen(nome); j++){
-            printf("%c", nome[j]);
-        }
-        contagem++;
-        puts("");
-    }
-    
     
     return 0;
 }
