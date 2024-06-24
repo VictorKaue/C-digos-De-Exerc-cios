@@ -7,7 +7,7 @@ typedef struct
 { 
     char titulo[MAX]; 
     int quanti_pag; 
-    float preco; 
+    float preco;
 }livro; 
  
 typedef struct
