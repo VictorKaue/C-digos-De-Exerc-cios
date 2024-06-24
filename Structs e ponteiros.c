@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 typedef struct
 {
@@ -14,7 +15,7 @@ typedef struct
     int escudo_valores;
     char escudo_nome[15];
 }inventario;
-    
+
 
 typedef struct{
 char nome[20];
@@ -24,17 +25,23 @@ char nome[20];
     inventario *_inventario;
 }personagem_atributos;
 
-inventario *criar_inventario();
+inventario *criar_inventario(inventario a){
+    strcpy(a.escudo_nome, "");
+    return ; 
+}
 
-personagem_atributos* criar_personagem();
+    // strcpy(inv[0].espadas_nome, "Espada de madeira");
+    // strcpy(inv[1].espadas_nome, "Espada de madeira refinada");
+    // strcpy(inv[2].espadas_nome, "Espada de cobre");
+    // strcpy(inv[3].espadas_nome, "Espada de ferro");
 
+personagem_atributos* criar_personagem(){
+
+    return ;
+}
 
 int main(){
     
 
     return 0;
 }
-
-inventario *criar_inventario();
-
-personagem_atributos* criar_personagem();
