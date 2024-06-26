@@ -5,43 +5,50 @@
 typedef struct
 {
     int pergaminho_verificador;
-    char pergaminho_nome[15];
+    char pergaminho_nome[4][28];
 
     int espadas_verificador;
-    int espadas_valores;
-    char espadas_nome[15];
+    int espadas_valores[4];
+    char espadas_nome[4][28];
 
     int escudos_verificador;
-    int escudo_valores;
-    char escudo_nome[15];
+    int escudo_valores[4];
+    char escudo_nome[4][28];
 }inventario;
 
 
 typedef struct{
-char nome[20];
+    char nome[20];
     char classe[20];
     int vida;
     int ataque;
     inventario *_inventario;
 }personagem_atributos;
 
-inventario *criar_inventario(inventario a){
-    strcpy(a.escudo_nome, "");
-    return ; 
+inventario *criar_inventario(){
+    inventario *a = calloc(1,sizeof(inventario));
+    strcpy(a->espadas_nome[0][28], "Espada de madeira");
+    strcpy(a->espadas_nome[1][28], "Espada de madeira refinada");
+    strcpy(a->espadas_nome[2][28], "Espada de cobre");
+    strcpy(a->espadas_nome[3][28], "Espada de ferro");
+
+    strcpy(a->escudo_nome[0][28], "Espada de madeira");
+    strcpy(a->escudo_nome[1][28], "Espada de madeira refinada");
+    strcpy(a->escudo_nome[2][28], "Espada de cobre");
+    strcpy(a->escudo_nome[3][28], "Espada de ferro");
+
+    return a;
 }
 
-    // strcpy(inv[0].espadas_nome, "Espada de madeira");
-    // strcpy(inv[1].espadas_nome, "Espada de madeira refinada");
-    // strcpy(inv[2].espadas_nome, "Espada de cobre");
-    // strcpy(inv[3].espadas_nome, "Espada de ferro");
 
 personagem_atributos* criar_personagem(){
 
-    return ;
+    return 0;
 }
 
 int main(){
-    
+    inventario *a = criar_inventario();
+
 
     return 0;
 }
