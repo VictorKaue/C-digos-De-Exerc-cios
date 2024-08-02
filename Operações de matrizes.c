@@ -14,6 +14,8 @@ void atribuir_valores(Matrizes *matrizes, int quanti_matrizes);
 void imprimir_matrizes(Matrizes *matrizes, int quanti_matrizes);
 void soma(Matrizes *matrizes, int quanti_matrizes);
 void subtracao(Matrizes *matrizes, int quanti_matrizes);
+void multiplicacao(Matrizes *matrizes, int quanti_matrizes);
+
 
 int main(){
     int operacao,quanti_matriz;
@@ -190,3 +192,12 @@ void subtracao(Matrizes *matrizes, int quanti_matrizes){
     }
 }
 
+void multiplicacao(Matrizes *matrizes, int quanti_matrizes){
+    int i,j;
+
+    for(i=0; i < 2; i++){
+        for(j=0; j < matrizes[0].colunas; j++){
+            matrizes[0];
+        }
+    }
+}
