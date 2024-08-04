@@ -195,9 +195,9 @@ void subtracao(Matrizes *matrizes, int quanti_matrizes){
 void multiplicacao(Matrizes *matrizes, int quanti_matrizes){
     int i,j;
 
-    for(i=0; i < 2; i++){
+    for(i=0; i < matrizes[0].linhas; i++){
         for(j=0; j < matrizes[0].colunas; j++){
-            matrizes[0];
+            matrizes[0].matriz[i][j] = ;
         }
     }
 }
