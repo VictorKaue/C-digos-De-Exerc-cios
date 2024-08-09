@@ -103,20 +103,40 @@ Matrizes *alocar_matriz(int operacao, int tamanho){
 }
 
 Matrizes *alocar_matriz_multiplicacao(int *quanti_matrizes){
-    int i,j,k;
-    j = quanti_matrizes;
-    for (i = 0; i < j; i++)
-    {
-        if (j%2 == 1)
+    int i,j;
+
+    Matrizes *matrizes = (Matrizes*)calloc(quanti_matrizes, sizeof(Matrizes));
+    if(matrizes == NULL){
+        desalocar_matriz(&matrizes, 0, quanti_matrizes);
+        printf("Erro ao alocar memória para a struct!\n");
+        return NULL;
+    }
+    for(i=0; i< quanti_matrizes; i++){
+        printf("Digite a quantidade de linhas para a %dª matriz: ", i+1);
+        scanf("%d", &matrizes[i].linhas);
+        printf("digite a quantidade de colunas para a %dª matriz: ", i+1);
+        scanf("%d", &matrizes[i].colunas);
+        if (matrizes[i].colunas != matrizes[i+1].linhas)
         {
-            quanti_matrizes++;
-            break;
+            printf("A quantidade de colunas da %dª matriz é diferente da quantidade de colunas da %dª matriz.", i, i+1);
+            return NULL;
         }
         
+        matrizes[i].matriz = (double **)calloc(matrizes[i].linhas,sizeof(double *));
+        if(matrizes[i].matriz == NULL){
+            desalocar_matriz(&matrizes, 1, quanti_matrizes);
+            printf("Erro ao alocar memória para linhas da matriz %dª", i+1);
+            return NULL;
+        }
+        for(j=0; j<matrizes[i].linhas; j++){
+            matrizes[i].matriz[j] = (double *)calloc(matrizes[i].colunas, sizeof(double));
+            if(matrizes[i].matriz[j] == NULL){
+                desalocar_matriz(&matrizes, 2, quanti_matrizes);
+                printf("Erro ao alocar memória para as colunas da matriz %dª", i+1);
+                return NULL;
+            }
+        }
     }
-    
-    Matrizes *matrizes = (Matrizes*)calloc(quanti_matrizes, sizeof(Matrizes));
-    
     return matrizes;
 }
 
@@ -221,7 +241,7 @@ void subtracao(Matrizes *matrizes, int quanti_matrizes){
 }
 
 void multiplicacao(Matrizes *matrizes, int quanti_matrizes){
-    int i,j;
+    int i,j,k;
 
     for(i=0; i < matrizes[0].linhas; i++){
         for(j=0; j < matrizes[0].colunas; j++){
