@@ -46,6 +46,10 @@ int main(){
         subtracao(matrizes, quanti_matriz);
         imprimir_matrizes(matrizes, quanti_matriz);
         break;
+    case 3:
+        multiplicacao(matrizes, quanti_matriz);
+        imprimir_matrizes(matrizes, quanti_matriz);
+        break;
     default:
         printf("Opção inválida!\n");
         break;
@@ -111,11 +115,19 @@ Matrizes *alocar_matriz_multiplicacao(int *quanti_matrizes){
         printf("Erro ao alocar memória para a struct!\n");
         return NULL;
     }
-    for(i=0; i< quanti_matrizes; i++){
-        printf("Digite a quantidade de linhas para a %dª matriz: ", i+1);
-        scanf("%d", &matrizes[i].linhas);
-        printf("digite a quantidade de colunas para a %dª matriz: ", i+1);
-        scanf("%d", &matrizes[i].colunas);
+    for(i=0; i < quanti_matrizes; i++){
+        if(i==0){
+            printf("Digite a quantidade de linhas para a %dª matriz: ", i+1);
+            scanf("%d", &matrizes[i].linhas);
+            printf("digite a quantidade de colunas para a %dª matriz: ", i+1);
+            scanf("%d", &matrizes[i].colunas);  
+        } else if(i>=2){
+            matrizes[i].linhas = matrizes[i-2].linhas;
+            matrizes[i].colunas = matrizes[i-1].colunas;
+        } else {
+            printf("digite a quantidade de colunas para a %dª matriz: ", i+1);
+            scanf("%d", &matrizes[i].colunas);
+        }
         if (matrizes[i].colunas != matrizes[i+1].linhas)
         {
             printf("A quantidade de colunas da %dª matriz é diferente da quantidade de colunas da %dª matriz.", i, i+1);
@@ -139,7 +151,6 @@ Matrizes *alocar_matriz_multiplicacao(int *quanti_matrizes){
     }
     return matrizes;
 }
-
 
 void desalocar_matriz(Matrizes **matrizes, int desalocar, int quanti_matrizes){
     int i,j;
@@ -241,11 +252,17 @@ void subtracao(Matrizes *matrizes, int quanti_matrizes){
 }
 
 void multiplicacao(Matrizes *matrizes, int quanti_matrizes){
-    int i,j,k;
-
-    for(i=0; i < matrizes[0].linhas; i++){
-        for(j=0; j < matrizes[0].colunas; j++){
-           
+    int i,j,k,l, aux = 0;
+    for (k = 0; k < quanti_matrizes; k+2){
+        for(i=0; i < matrizes[k].linhas; i++){
+            for(j=0; j < matrizes[k].colunas; j++){
+                for (l = 0; i < l; i++)
+                {
+                    aux += matrizes[k].matriz[][] * matrizes[k].matriz[][]
+                }
+                
+            }
+            matrizes[k+2].matriz[i][j] = aux;
         }
     }
 }
